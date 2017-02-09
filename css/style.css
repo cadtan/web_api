@@ -1,0 +1,27 @@
+/* ================================= 
+  Base Element Styles
+==================================== */
+
+* {
+	box-sizing: border-box;
+}
+
+
+body {
+	font-family: 'Lato', sans-serif;
+	font-weight: 400;
+	line-height: 1.6;
+	font-size: 1em;
+	color: #666;
+}
+
+h2 {
+	font-size: 1em;
+	color: #035386;
+}
+
+h1, 
+p {
+	margin: 0; 
+	padding: 0;
+}
