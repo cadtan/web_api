@@ -2,13 +2,61 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Web Application Dashboard</title>
+	<title>Web Api</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
+	<!-- <link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet"> -->
+	<link href="https://fonts.googleapis.com/css?family=Fjalla+One|Poppins|Quicksand|Roboto+Mono" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Caveat+Brush|Gloria+Hallelujah" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	      rel="stylesheet">
 	<link rel="stylesheet" href="css/normalize.css">
 	<link href="css/style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
+	
+	<div class="top-container">
+		<!-- Form  -->
+		<form class="search-engine">
+			<fieldset>
+				<legend>API search widget</legend>
+				<label for="search" class="search-label">API Search</label>
+				<input type="search" id="search" placeholder="Search"><button id="submit" type="submit" value="Search" id="submit">
+					<i class="material-icons">search</i>
+				</button>				
+			</fieldset>
+		</form>
+
+		<h1>Find any photos or albums in Flicker/Spotify</h1>
+
+		<div class="switch-options">
+			<span class="flicker">Flicker</span>
+			<div class="switch-container">
+				<label class="switch">
+					<input class="switch-input" type="checkbox">
+					<div class="switch-btn">
+						<!-- <span class="switch-label" data-spotify="Spotify" data-flicker="Flicker"></span> -->
+					</div>		
+				</label>
+			</div>
+			<span class="flicker">Spotify</span>
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="sort">
+			<span>Sort By:</span>
+			<button class="sort-opt1"></button>
+			<button class="sort-opt2"></button>
+		</div>		
+	</div>
+	
+
+	<div id="gallery">
+		<!-- Gallery -->
+		<button class="previous-btn"><</button>
+		<button class="next-btn">></button>
+		<ul id="photos" ></ul>
+	</div>
 
 <!-- Script source -->
 <script src="js/jquery-3.1.1.min.js"></script>
