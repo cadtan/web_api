@@ -4,7 +4,6 @@
 =============================================================== */
 
 var $overlay = $('<div id="overlay"></div>');
-var $img = $(".slideContainer img");
 var $slideContainer = $('<div id="slide-container">');
 var $previousButton = $('.previous-btn');
 var $nextButton = $('.next-btn');
@@ -20,7 +19,7 @@ $overlay.hide();
 $nextButton.hide();
 $previousButton.hide();
 
-var selected="";
+// var selected="";
 var items = [];
 var tracks = [];
 var currentIndex = 0;
@@ -32,7 +31,7 @@ var currentIndex = 0;
 
 // Get api option from switch button
 function apiSwitch() {
-  if( document.querySelector(".switch-input").checked ) {
+  if( document.querySelector("#api-option").value === "spotify" ) {
     return "spotify";
   } else {
     return "flicker";
@@ -43,7 +42,6 @@ function apiSwitch() {
 $('form').submit( function ( evt ) {
 	evt.preventDefault();
 	var api = apiSwitch();
-	var $submitButton = $('#submit');
 	var $searchField = $('#search');
 	var query = $searchField.val();
 
@@ -64,7 +62,7 @@ $('form').submit( function ( evt ) {
 	var flickrOptions = {
 		tags: query,
 		format: "json"
-	}
+	};
 
 	if( api === "spotify" ) {
 		getApi( spotifyAPI, spotifyOptions, getSpotifyItems );
@@ -114,7 +112,7 @@ function getSpotifyTracks( id ) {
 	var trackUrl = "https://api.spotify.com/v1/albums/" + id + "/tracks";
 	var trackOptions = {
 		limit: 10
-	}
+	};
 
 	$.getJSON( trackUrl, trackOptions, function( data ){
 		$.each(data.items, function( index, item ){
@@ -153,7 +151,6 @@ function showSortOptions (){
 	var api = apiSwitch();
 	$('.sort').show(200);
 	if ( api === "spotify" ) {
-		console.log('spotify')
 		$('.sort-opt1').text('Artist');
 		$('.sort-opt2').text('Album');
 	} else {
@@ -169,19 +166,19 @@ $('.sort-opt1').click( function(){
 	$(this).addClass('selected');
 	items.sort( function( a, b ){
 		if ( api === "spotify" ) {
-		    var nameA = a.artist.toLowerCase(), 
-		    	nameB = b.artist.toLowerCase()
-		    if (nameA < nameB) //sort string ascending
+		    var artistA = a.artist.toLowerCase(), 
+		    	artistB = b.artist.toLowerCase();
+		    if (artistA < artistB) //sort string ascending
 		        return -1; 
-		    if (nameA > nameB) //sort string descending
+		    if (artistA > artistB) //sort string descending
 		        return 1; 
 		    return 0; //default return value (no sorting)
 		} else {
-			var nameA = a.author.toLowerCase(), 
-				nameB = b.author.toLowerCase()
-			if (nameA < nameB) 
+			var authorA = a.author.toLowerCase(), 
+				authorB = b.author.toLowerCase();
+			if (authorA < authorB) 
 			    return -1; 
-			if (nameA > nameB)
+			if (authorA > authorB)
 			    return 1;
 			return 0; 
 		}
@@ -189,8 +186,6 @@ $('.sort-opt1').click( function(){
  
    displayGallery();
 });
-
-
 
 // Sort option2 button click event
 $('.sort-opt2').click( function(){
@@ -200,7 +195,7 @@ $('.sort-opt2').click( function(){
 	items.sort( function( a, b ){
 		if ( api === "spotify" ) {
 			var nameA = a.album.toLowerCase(),  
-		    	nameB = b.album.toLowerCase()
+		    	nameB = b.album.toLowerCase();
 		    if (nameA < nameB) 
 		        return -1; 
 		    if (nameA > nameB) 
@@ -209,16 +204,13 @@ $('.sort-opt2').click( function(){
 		} else {
 			// Convert date to milliseconds
 			var dateA = Date.parse(a.published), 
-			 	dateB = Date.parse(b.published)
+			 	dateB = Date.parse(b.published);
 			return dateA-dateB;
 		}
 	}); // end sort
  
    displayGallery();
 });
-
-
-
 
 
 /* ============================================================ 
@@ -240,7 +232,6 @@ function displayGallery() {
 		itemHTML = 'No photos found that match';
 	}
 	$('#photos').html(itemHTML);
-
 }
 
 // Show slide
@@ -273,12 +264,9 @@ function displaySlide( ) {
 		slideHTML += '<h1>Author: ' + author + '</h1>';
 		slideHTML += '<h2>Published Date: ' + publishedDate + '</h2>';
 	}
-	slideHTML += '</div>'
+	slideHTML += '</div>';
 	$slideContainer.html(slideHTML);
 }
-
-
-
 
 
 /* ============================================================ 
@@ -322,7 +310,7 @@ $nextButton.click( function(){
 // Previous button
 $previousButton.click( function(){
 	if( currentIndex <= 0 ) {
-		currentIndex = 0
+		currentIndex = 0;
 	} else {
 		currentIndex--;
 	}
