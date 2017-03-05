@@ -25,16 +25,6 @@ var items = [];
 var tracks = [];
 var currentIndex = 0;
 
-// Swiitch Button
-// $(".switch-input").on("change", function() {
-// 	var isChecked =  $(this).is(':checked');	
-// 	if( isChecked ) {
-// 		selected = "spotify";
-// 	} else {
-// 		selected = "flicker";
-// 	}	
-// });
-
 
 /* ============================================================ 
   Connect to api / retrieve data
@@ -70,7 +60,7 @@ $('form').submit( function ( evt ) {
 	};
 
 	// Flicker api
-	var flickrAPI = "http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?";
+	var flickrAPI = "https://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?";
 	var flickrOptions = {
 		tags: query,
 		format: "json"
