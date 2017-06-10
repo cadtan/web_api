@@ -4,9 +4,7 @@
 	<meta charset="UTF-8">
 	<title>Web Api</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<!-- <link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet"> -->
-	<link href="https://fonts.googleapis.com/css?family=Fjalla+One|Poppins|Quicksand|Roboto+Mono" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Caveat+Brush|Gloria+Hallelujah" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Fjalla+One|Quicksand|Roboto+Mono" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
 	      rel="stylesheet">
 	<link rel="stylesheet" href="css/normalize.css">
@@ -20,28 +18,20 @@
 			<fieldset>
 				<legend>API search widget</legend>
 				<label for="search" class="search-label">API Search</label>
-				<input type="search" id="search" placeholder="Search"><button id="submit" type="submit" value="Search" id="submit">
-					<i class="material-icons">search</i>
-				</button>				
+				<div class="search-container clearfix">
+					<input type="search" id="search" placeholder="Search"><select id="api-option">
+					<option selected value="openlibrary">openlibrary</option>
+					<option value="flicker">Flicker</option>
+
+					</select>
+					<button id="submit" type="submit" value="Submit">
+						<i class="material-icons">search</i>
+					</button>				
+				</div>
 			</fieldset>
 		</form>
-
-		<h1>Find any photos or albums in Flicker/Spotify</h1>
-
-		<div class="switch-options">
-			<span class="flicker">Flicker</span>
-			<div class="switch-container">
-				<label class="switch">
-					<input class="switch-input" type="checkbox">
-					<div class="switch-btn">
-						<!-- <span class="switch-label" data-spotify="Spotify" data-flicker="Flicker"></span> -->
-					</div>		
-				</label>
-			</div>
-			<span class="flicker">Spotify</span>
-		</div>
+		<h1>Find any photos or books in Flicker/Openlibrary</h1>
 	</div>
-
 	<div class="container">
 		<div class="sort">
 			<span>Sort By:</span>
@@ -50,10 +40,9 @@
 		</div>		
 	</div>
 	
-
+	<!-- Gallery -->
 	<div id="gallery">
-		<!-- Gallery -->
-		<button class="previous-btn"><</button>
+		<button class="previous-btn">&lt;</button>
 		<button class="next-btn">></button>
 		<ul id="photos" ></ul>
 	</div>
