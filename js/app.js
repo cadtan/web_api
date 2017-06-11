@@ -46,7 +46,7 @@ $('form').submit( function ( evt ) {
 	var query = $searchField.val();
 
 	// Spotify api
-	var openlibraryAPI = 'http://openlibrary.org/search.json?';
+	var openlibraryAPI = 'https://openlibrary.org/search.json?';
 	var openlibraryOptions = {
 	   q : query
 	};
