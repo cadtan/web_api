@@ -245,12 +245,15 @@ img {
 	display: none;
 }
 
+<<<<<<< HEAD
 #book-link a {
 	padding: 5px 10px;
 	display: inline-block;
 	color: #fff;
 }
 
+=======
+>>>>>>> c5f28150cc328a69a09ea1c55c7e909ba26989e5
 .sort {
 	display: none;
 }
@@ -302,7 +305,11 @@ img {
 	}
 
 	input[type="search"] {
+<<<<<<< HEAD
 		width: 65%;
+=======
+		width: 72%;
+>>>>>>> c5f28150cc328a69a09ea1c55c7e909ba26989e5
 		border-bottom-left-radius: 5px;
 		border-top-left-radius: 5px;
 		border-top-right-radius: 0;
@@ -310,7 +317,11 @@ img {
 	}
 
 	#api-option {
+<<<<<<< HEAD
 		width: 25%;
+=======
+		width: 18%;
+>>>>>>> c5f28150cc328a69a09ea1c55c7e909ba26989e5
 		border-top-left-radius: 0;
 		border-bottom-left-radius: 0;
 	}

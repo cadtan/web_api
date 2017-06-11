@@ -19,6 +19,10 @@ $overlay.hide();
 $nextButton.hide();
 $previousButton.hide();
 
+<<<<<<< HEAD
+=======
+// var selected="";
+>>>>>>> c5f28150cc328a69a09ea1c55c7e909ba26989e5
 var items = [];
 var tracks = [];
 var currentIndex = 0;
@@ -31,8 +35,13 @@ var currentIndex = 0;
 
 // Get api option from switch button
 function apiSwitch() {
+<<<<<<< HEAD
   if( document.querySelector("#api-option").value === "openlibrary" ) {
     return "openlibrary";
+=======
+  if( document.querySelector("#api-option").value === "spotify" ) {
+    return "spotify";
+>>>>>>> c5f28150cc328a69a09ea1c55c7e909ba26989e5
   } else {
     return "flicker";
   }
@@ -106,6 +115,28 @@ function getOpenlibraryItems( data ) {
     displayGallery();
 }
 
+<<<<<<< HEAD
+=======
+// Get spotify alum tracks
+function getSpotifyTracks( id ) {
+	var tracks=[];
+	var trackUrl = "https://api.spotify.com/v1/albums/" + id + "/tracks";
+	var trackOptions = {
+		limit: 10
+	};
+
+	$.getJSON( trackUrl, trackOptions, function( data ){
+		$.each(data.items, function( index, item ){
+			var trackObj = {
+				track: item.name
+			};
+			tracks.push(trackObj);
+		}); // end each		
+	}); // end json
+	return tracks;	
+}
+
+>>>>>>> c5f28150cc328a69a09ea1c55c7e909ba26989e5
 // Get flicker items
 function getFlickrItems( data ) {
 	// Clear previous search items
@@ -131,9 +162,15 @@ function getFlickrItems( data ) {
 function showSortOptions (){
 	var api = apiSwitch();
 	$('.sort').show(200);
+<<<<<<< HEAD
 	if ( api === "openlibrary" ) {
 		$('.sort-opt1').text('Author');
 		$('.sort-opt2').text('Published Date');
+=======
+	if ( api === "spotify" ) {
+		$('.sort-opt1').text('Artist');
+		$('.sort-opt2').text('Album');
+>>>>>>> c5f28150cc328a69a09ea1c55c7e909ba26989e5
 	} else {
 		$('.sort-opt1').text('Author');
 		$('.sort-opt2').text('Date');
@@ -146,12 +183,21 @@ $('.sort-opt1').click( function(){
 	$("button").removeClass("selected");
 	$(this).addClass('selected');
 	items.sort( function( a, b ){
+<<<<<<< HEAD
 		if ( api === "openlibrary" ) {
 		    var bookAuthorA = a.bookAuthor, 
 		    	bookAuthorB = b.bookAuthor;
 		    if (bookAuthorA < bookAuthorB) //sort string ascending
 		        return -1; 
 		    if (bookAuthorA > bookAuthorB) //sort string descending
+=======
+		if ( api === "spotify" ) {
+		    var artistA = a.artist.toLowerCase(), 
+		    	artistB = b.artist.toLowerCase();
+		    if (artistA < artistB) //sort string ascending
+		        return -1; 
+		    if (artistA > artistB) //sort string descending
+>>>>>>> c5f28150cc328a69a09ea1c55c7e909ba26989e5
 		        return 1; 
 		    return 0; //default return value (no sorting)
 		} else {
@@ -174,9 +220,15 @@ $('.sort-opt2').click( function(){
 	$("button").removeClass("selected");
 	$(this).addClass('selected');
 	items.sort( function( a, b ){
+<<<<<<< HEAD
 		if ( api === "openlibrary" ) {
 			var nameA = a.firstPublished,  
 		    	nameB = b.firstPublished;
+=======
+		if ( api === "spotify" ) {
+			var nameA = a.album.toLowerCase(),  
+		    	nameB = b.album.toLowerCase();
+>>>>>>> c5f28150cc328a69a09ea1c55c7e909ba26989e5
 		    if (nameA < nameB) 
 		        return -1; 
 		    if (nameA > nameB) 
@@ -193,6 +245,10 @@ $('.sort-opt2').click( function(){
    displayGallery();
 });
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> c5f28150cc328a69a09ea1c55c7e909ba26989e5
 /* ============================================================ 
   Display gallery / lightbox
 =============================================================== */
