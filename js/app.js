@@ -4,15 +4,15 @@
 =============================================================== */
 
 var $overlay = $('<div id="overlay"></div>');
-var $slideContainer = $('<div id="slide-container">');
+var $slideContainer = $('<div id="slide-container" class="clearfix">');
 var $previousButton = $('.previous-btn');
 var $nextButton = $('.next-btn');
 
 // Append element
-$("body").append($overlay);
 $overlay.append($previousButton);
-$overlay.append($slideContainer);
 $overlay.append($nextButton);
+$overlay.append($slideContainer);
+$("body").append($overlay);
 
 // Hide element
 $overlay.hide();
@@ -20,7 +20,6 @@ $nextButton.hide();
 $previousButton.hide();
 
 var items = [];
-var tracks = [];
 var currentIndex = 0;
 
 
@@ -87,6 +86,7 @@ function getOpenlibraryItems( data ) {
 	items = [];
     $.each( data.docs, function( index, item ) {
       	var itemObj = {
+
       		bookAuthor: getFirstIndex(item.author_name),
   			title: item.title,
   			firstPublished: item.first_publish_year,
@@ -119,7 +119,7 @@ function getFlickrItems( data ) {
      	items.push(itemObj);
     }); // end each	
 
-    console.log(items)
+
     displayGallery();
 }
 
@@ -201,19 +201,31 @@ $('.sort-opt2').click( function(){
 function displayGallery() {
 	var api = apiSwitch();
 	var itemHTML = '';
-
+	
 	if (items.length > 0 ) {
 		$.each( items, function( index, item ) {
+		   var imageUrl = item.imgUrl;
+		   var title = item.title;
 		   itemHTML += '<li class="photo">';
-		   itemHTML += '<a href="' + item.imgUrl + '">';
-		   itemHTML += '<img src="' + item.imgUrl + ' "></a></li>';  
-		});
+		   // Display title if no photo available
+		   if ( imageUrl.indexOf("undefined") !== -1 ){
+		   		itemHTML += '<a href="' + imageUrl + '">';
+		   		itemHTML += "<div class ='undefined-photo'>";	 
+		   		itemHTML += "<p>Title</p>";
+		   		itemHTML += "<h2>" + title + "</h2>";
+		   		itemHTML += "</div></a></li>";
+		   } else {
+			   itemHTML += '<a href="' + imageUrl + '">';
+			   itemHTML += '<img src="' + imageUrl + ' "></a></li>'; 
+		   } 
+		}); // end each
+
 	} else {
 		itemHTML = 'No photos found that match';
 	}
 	$('#photos').html(itemHTML);
 }
-$('#book-link').css({"color":"green"});
+
 
 // Show slide
 function displaySlide() {
@@ -234,8 +246,14 @@ function displaySlide() {
 	var slideHTML = "";
 
 	slideHTML += '<button class="close-btn">X</button>';
-	slideHTML += '<img src="' + imageLink + '">';	
+	// Display text if no photo available
+	if ( imageLink.indexOf("undefined") !== -1 ){
+		slideHTML += '<div class="undefined-photo-overlay">No Photo</div>';
+	} else {
+		slideHTML += '<img src="' + imageLink + '">';	
+	}
 	slideHTML += '<div class="content">';
+
 	// Show spotify content
 	if( api === "openlibrary" ) {
 		slideHTML += '<h1>' + title + '</h1>';
@@ -249,8 +267,9 @@ function displaySlide() {
 		slideHTML += '<li>Editions: ' + editionCount + '<li>';
 		slideHTML += '<li>Ebook: ' + ebookCount + '<li>';
 		slideHTML += '</ul>';
-		slideHTML += '<button id="book-link"><a href="' + openlibraryLink + '"> More Info</a></button>';
+		slideHTML += '<a class="book-link" href="' + openlibraryLink + '"> More Info</a>';
 		slideHTML += '</div>';
+
 	// Show flicker content
 	} else {
 		slideHTML += '<h1>Author: ' + author + '</h1>';
