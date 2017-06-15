@@ -211,7 +211,8 @@ li {
 	width: 80%;
 	position: relative; /*vertical center div*/
 	top: 50%; /*vertical center div*/
-	transform: translateY(-50%); /*vertical center div*/
+	margin-top: -25%;/*vertical center div*/
+	/*transform: translateY(-50%); *//*vertical center div*/
 	margin: 0 auto;
 	max-width: 920px;
 	background-color: rgba(0, 0, 0, 0.8);
