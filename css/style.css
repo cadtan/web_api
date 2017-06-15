@@ -44,10 +44,6 @@ button {
 	border: 0;
 }
 
-button:hover {
-	/*background-color: #0D9B95;*/
-}
-
 a {
 	text-decoration: none;
 }
@@ -55,6 +51,7 @@ a {
 img {
 	width: 100%;
 	max-width: 100%;
+	display: block; /* remove white space below img */
 }
 
 /* ================================= 
@@ -174,8 +171,8 @@ li {
 }
 
 #slide-container img {
+	width: 80%;
 	height: auto;
-	display: block; /* remove white space below img */
 	margin: 0 auto;
 	margin-bottom: 1em;
 }
@@ -209,10 +206,6 @@ li {
 
 #slide-container {
 	width: 80%;
-	position: relative; /*vertical center div*/
-	top: 50%; /*vertical center div*/
-	margin-top: -25%;/*vertical center div*/
-	/*transform: translateY(-50%); *//*vertical center div*/
 	margin: 0 auto;
 	max-width: 920px;
 	background-color: rgba(0, 0, 0, 0.8);
@@ -280,6 +273,7 @@ li {
 }
 
 .track-list li {
+	width: 100%;
 	border: 0;
 	margin: 0;
 	padding: 0;
@@ -336,6 +330,14 @@ li {
    Media  Queries
 ==================================== */
 
+@media ( min-width: 450px ) {
+
+	#slide-container img {
+	  width: 50%;
+	}
+
+}
+
 @media ( min-width: 768px ) {
 	
 	.top-container h1 {
@@ -367,6 +369,13 @@ li {
 
 	#submit {
 	 	width: 10%;
+	}
+
+	#slide-container {
+		width: 80%;
+		position: relative; /*vertical center div*/
+		top: 50%; /*vertical center div*/
+		transform: translateY(-50%);/*vertical center div*/
 	}
 
 	.undefined-photo {
